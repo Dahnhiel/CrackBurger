@@ -1,0 +1,268 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Crack Burger design system.
+ * Charcoal base, toasted-bun amber accent, hot brand red for CTAs.
+ * All colors are oklch tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-char: var(--char);
+  --color-ember: var(--ember);
+  --color-bun: var(--bun);
+  --color-bun-foreground: var(--bun-foreground);
+  --color-cream: var(--cream);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.16 0.008 60);
+  --foreground: oklch(0.96 0.012 85);
+  --char: oklch(0.11 0.006 60);
+  --card: oklch(0.21 0.01 62);
+  --card-foreground: oklch(0.96 0.012 85);
+  --popover: oklch(0.19 0.01 62);
+  --popover-foreground: oklch(0.96 0.012 85);
+
+  /* Hot brand red — CTAs */
+  --primary: oklch(0.55 0.216 26);
+  --primary-foreground: oklch(0.98 0.01 85);
+
+  --secondary: oklch(0.26 0.012 62);
+  --secondary-foreground: oklch(0.96 0.012 85);
+  --muted: oklch(0.25 0.01 62);
+  --muted-foreground: oklch(0.72 0.02 78);
+
+  /* Toasted bun amber — primary accent */
+  --accent: oklch(0.79 0.16 74);
+  --accent-foreground: oklch(0.16 0.008 60);
+  --bun: oklch(0.79 0.16 74);
+  --bun-foreground: oklch(0.16 0.008 60);
+  --ember: oklch(0.68 0.2 45);
+  --cream: oklch(0.94 0.03 88);
+
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.32 0.012 62);
+  --input: oklch(0.32 0.012 62);
+  --ring: oklch(0.79 0.16 74);
+
+  --chart-1: oklch(0.79 0.16 74);
+  --chart-2: oklch(0.55 0.216 26);
+  --chart-3: oklch(0.68 0.2 45);
+  --chart-4: oklch(0.72 0.02 78);
+  --chart-5: oklch(0.94 0.03 88);
+
+  --sidebar: oklch(0.19 0.01 62);
+  --sidebar-foreground: oklch(0.96 0.012 85);
+  --sidebar-primary: oklch(0.55 0.216 26);
+  --sidebar-primary-foreground: oklch(0.98 0.01 85);
+  --sidebar-accent: oklch(0.26 0.012 62);
+  --sidebar-accent-foreground: oklch(0.96 0.012 85);
+  --sidebar-border: oklch(0.32 0.012 62);
+  --sidebar-ring: oklch(0.79 0.16 74);
+
+  --gradient-ember: linear-gradient(
+    135deg,
+    oklch(0.55 0.216 26) 0%,
+    oklch(0.7 0.2 52) 55%,
+    oklch(0.83 0.16 84) 100%
+  );
+  --gradient-char: linear-gradient(180deg, oklch(0.16 0.008 60) 0%, oklch(0.11 0.006 60) 100%);
+  --shadow-ember: 0 18px 50px -18px oklch(0.55 0.216 26 / 0.55);
+  --shadow-lift: 0 24px 60px -24px oklch(0 0 0 / 0.8);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  h3,
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 0.92;
+  }
+}
+
+@utility text-stamp {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 0 oklch(0 0 0 / 0.45);
+}
+
+@utility bg-ember {
+  background-image: var(--gradient-ember);
+}
+
+@utility bg-char-fade {
+  background-image: var(--gradient-char);
+}
+
+@utility shadow-ember {
+  box-shadow: var(--shadow-ember);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: radial-gradient(oklch(1 0 0 / 0.6) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Hero burger build sequence */
+@keyframes layer-drop {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -220px, 0) scale(1.06);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+}
+
+@keyframes layer-smash {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -260px, 0) scaleY(1.1) scaleX(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-50%, 6px, 0) scaleY(0.62) scaleX(1.22);
+  }
+  80% {
+    transform: translate3d(-50%, 0, 0) scaleY(1.08) scaleX(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+}
+
+@keyframes stack-idle {
+  0%,
+  100% {
+    transform: rotateX(58deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateX(58deg) rotateZ(12deg);
+  }
+}
+
+@keyframes smash-ring {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.9);
+  }
+}
+
+@keyframes marquee-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee-slide 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
